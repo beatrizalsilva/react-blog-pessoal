@@ -1,0 +1,4 @@
+/* diretivas para cada uma das camadas */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
