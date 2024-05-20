@@ -1,9 +1,15 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import "./Cadastro.css"
 import Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
+import { useNavigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
+import { AuthContext } from "../../context/AuthContext";
 
 function Cadastro() {
+    const navigate = useNavigate();
+    const { isLoading } = useContext(AuthContext);
+
     // estado para confirmar a senha
     const [confirmaSenha, setConfirmaSenha] = useState<string>("");
 
@@ -15,6 +21,16 @@ function Cadastro() {
         senha: "",
         foto: ""
     });
+
+    useEffect(() => {
+        if (usuario.id !== 0) {
+            retorna();
+        }
+    }, [usuario])
+
+    function retorna() {
+        navigate("/login")
+    }
 
     // função para criar um evento para mudança do estado
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
@@ -78,8 +94,13 @@ function Cadastro() {
                     </div>
                     
                     <div className="flex justify-around w-full gap-8">
-                        <button className="rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2">Cancelar</button>
-                        <button type="submit" className="rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 py-2">Cadastrar</button>
+                        <button className="rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2" onClick={retorna}>
+                        { isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} />: <span>Cancelar</span> }
+                        </button>
+
+                        <button type="submit" className="rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 py-2">
+                        { isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} />: <span>Cadastrar</span> }
+                        </button>
                     </div>
                 </form>
             </div>
