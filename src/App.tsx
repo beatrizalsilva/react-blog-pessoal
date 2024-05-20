@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./paginas/footer/Footer";
-import NavBar from "./paginas/header/NavBar";
-import Home from "./paginas/home/Home";
-import Cadastro from "./paginas/cadastro/Cadastro";
-import Login from "./paginas/login/Login";
+import Footer from "./components/footer/Footer";
+import NavBar from "./components/header/NavBar";
+import Home from "./pages/home/Home";
+import Cadastro from "./pages/cadastro/Cadastro";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
