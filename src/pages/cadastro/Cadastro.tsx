@@ -26,10 +26,10 @@ function Cadastro() {
         if (usuario.id !== 0) {
             retorna();
         }
-    }, [usuario])
+    }, [usuario]);
 
     function retorna() {
-        navigate("/login")
+        navigate("/login");
     }
 
     // função para criar um evento para mudança do estado
@@ -51,11 +51,12 @@ function Cadastro() {
         if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
             try {
                 await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
+                alert(`Cadastro realizado com sucesso! Que a Força esteja com você, jovem padawan.`)
             } catch (error) {
                 alert(`O lado negro da Força interferiu! Erro ao cadastrar joven padawan!`)
             }
         } else {
-            alert(`Estes não são os dados que você procura. Verificar as informações, você deve.`),
+            alert(`Senha incorreta! Verificar as informações, você deve.`),
             setUsuario({ ...usuario, senha: "" });
             setConfirmaSenha("");
         }

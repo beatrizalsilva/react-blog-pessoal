@@ -15,9 +15,9 @@ function Login() {
     
     useEffect(() => {
         if (usuario.token !== "") {
-            navigate('/home')
+            navigate('/home');
         }
-    }, [usuario])
+    }, [usuario]);
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
         setUsuarioLogin({
@@ -27,8 +27,8 @@ function Login() {
     }
 
     function login(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault()
-        handleLogin(usuarioLogin)
+        e.preventDefault();
+        handleLogin(usuarioLogin);
     }
 
     return (

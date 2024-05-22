@@ -28,16 +28,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const [isLoading, setIsLoading] = useState(false);
 
     async function handleLogin(userLogin: UsuarioLogin) {
-        setIsLoading(true)
+        setIsLoading(true);
         try {
             await login(`/usuarios/logar`, userLogin, setUsuario)
-            alert("Usuário autenticado com sucesso!")
-            setIsLoading(false)
-
+            alert("Usuário autenticado com sucesso! Que a Força esteja com você!");
+            setIsLoading(false);
         } catch (error) {
             console.log(error)
-            alert("Dados do usuário inconsistentes!")
-            setIsLoading(false)
+            alert("Falha na autenticação! Verificar as informações, você deve.");
+            setIsLoading(false);
         }
     }
 

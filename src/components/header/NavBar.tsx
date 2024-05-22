@@ -8,7 +8,7 @@ function NavBar() {
 
     function logout() {
         handleLogout();
-        alert(`Usuário deslogado com sucesso!`)
+        alert(`Você foi desconectado! Que a Força esteja com você, sempre.`)
         navigate("/login")
     }
 
