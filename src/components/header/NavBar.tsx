@@ -14,21 +14,18 @@ function NavBar() {
 
     return (
         <>
-            <div className="w-full bg-indigo-900 text-white flex justify-center py-4">
+            <div className="w-full bg-gradient-to-r from-pink-300 to-purple-400 text-black flex justify-center py-4">
                 <div className="container text-lg">
 
                     <div className="flex justify-between ">
-                        {/* <p className="text-1xl font-bold uppercase">Blog Pessoal</p> */}
-                        <Link to="/home" className="text-1xl font-bold uppercase hover:text-slate-400 cursor-pointer">Blog Pessoal</Link>
+                        <Link to="/home" className="text-1x font-[Lora] font-bold uppercase hover:text-pink-500 cursor-pointer">Blog Pessoal</Link>
 
                         <div className="flex justify-between gap-4">
-                            <div className="hover:text-slate-400 cursor-pointer">Postagens</div>
-                            <Link to="/temas" className="hover:text-slate-400 cursor-pointer">Temas</Link>
-                            {/* <div className="hover:text-slate-400 cursor-pointer">Temas</div> */}
-                            <div className="hover:text-slate-400 cursor-pointer">Cadastrar tema</div>
-                            <div className="hover:text-slate-400 cursor-pointer">Perfil</div>
-                            <Link to="" className="hover:text-slate-400 cursor-pointer" onClick={logout}>Sair</Link>
-                            {/* <div className="hover:text-slate-400 cursor-pointer">Sair</div> */}
+                            <div className="hover:text-pink-500 cursor-pointer">Postagens</div>
+                            <Link to="/temas" className="hover:text-pink-500 cursor-pointer">Temas</Link>
+                            <Link to="/cadastrarTema" className="hover:text-pink-500 cursor-pointer">Cadastrar temas</Link>
+                            <div className="hover:text-pink-500 cursor-pointer">Perfil</div>
+                            <Link to="" className="hover:text-pink-500 cursor-pointer" onClick={logout}>Sair</Link>
                         </div>
                     </div>
                 </div>

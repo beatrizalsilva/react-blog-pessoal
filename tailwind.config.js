@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      display: ["Roboto", "sans-serif"]
+      display: ["Open Sans", "Lora"]
     },
   },
   plugins: [],
