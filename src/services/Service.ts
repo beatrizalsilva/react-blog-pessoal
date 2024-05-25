@@ -1,6 +1,5 @@
 // configurando a api que será consumida
 import axios from "axios";
-
 const api = axios.create({ baseURL: "https://blogpessoal-zrre.onrender.com" });
 
 // usando object para ficar genérico e conseguir manipular qualquer dado
@@ -29,6 +28,7 @@ export const atualizar = async(url: string, dados: Object, setDados: Function, h
     setDados(resposta.data)
 }
   
+// url representa o endereço do endpoint da API e o header recebe a requisição de delete
 export const deletar = async(url: string, header: object) => {
     await api.delete(url, header)
 }

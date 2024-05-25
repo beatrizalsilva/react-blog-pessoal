@@ -12,25 +12,20 @@ import DeletarTema from "./components/temas/deletarTema/DeletarTema";
 function App() {
   return (
     <>
-      {/* o browser router vai disponibilizar as rotas para os demais componentes */}
       <AuthProvider>
+        {/* o browser router vai disponibilizar as rotas para os demais componentes */}
         <BrowserRouter>
           <NavBar />
 
           <div className="min-h-[80vh]">
             <Routes>
               {/* pode ter duas rotas apontando para o mesmo componente, mas não pode ter uma mesma rota apontando para componentes diferentes */}
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
-
-              <Route path="/" element={<Cadastro />} />
-              <Route path="/cadastro" element={<Cadastro />} />
-
               <Route path="/" element={<Login />} />
+              
+              <Route path="/home" element={<Home />} />
+              <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/login" element={<Login />} />
-
               <Route path="/temas" element={<ListaTemas />} />
-
               <Route path="/cadastrarTema" element={<FormularioTema />} />
               <Route path="/deletarTema/:id" element={<DeletarTema />} />
               <Route path="/editarTema/:id" element={<FormularioTema />} />

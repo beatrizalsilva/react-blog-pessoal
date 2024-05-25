@@ -1,14 +1,13 @@
-import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import "./Cadastro.css"
 import Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
 import { useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
-import { AuthContext } from "../../context/AuthContext";
 
 function Cadastro() {
     const navigate = useNavigate();
-    const { isLoading } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     // estado para confirmar a senha
     const [confirmaSenha, setConfirmaSenha] = useState<string>("");
@@ -49,6 +48,7 @@ function Cadastro() {
         e.preventDefault();
 
         if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
+            setIsLoading(true)
             try {
                 await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
                 alert(`Cadastro realizado com sucesso! Que a Força esteja com você, jovem padawan.`)

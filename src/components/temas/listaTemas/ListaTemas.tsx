@@ -4,6 +4,7 @@ import Tema from "../../../models/Tema";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import { buscar } from "../../../services/Service";
+import { Hearts } from "react-loader-spinner";
 
 function ListaTemas() {
     const [temas, setTemas] = useState<Tema[]>([]);
@@ -38,9 +39,17 @@ function ListaTemas() {
 
     return (
         <>
-            {/* {temas.length === 0 && (
-                <Dna visible={true} height="200" width="200" ariaLabel="dna-loading" wrapperStyle={{}} wrapperClass="dna-wrapper mx-auto"/>
-            )} */}
+            {temas.length === 0 && (
+                <Hearts
+                  height="80"
+                  width="80"
+                  color="#7c3aed"
+                  ariaLabel="hearts-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+            )}
             
             <div className="flex justify-center w-full my-4">
                 <div className="container flex flex-col">

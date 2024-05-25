@@ -4,12 +4,12 @@ import { AuthContext } from "../../context/AuthContext";
 
 function NavBar() {
     const navigate = useNavigate();
-    const { usuario, handleLogout } = useContext(AuthContext);
+    const { handleLogout } = useContext(AuthContext);
 
     function logout() {
         handleLogout();
-        alert(`Você foi desconectado! Que a Força esteja com você, sempre.`)
-        navigate("/login")
+        alert(`Você foi desconectado. Que a Força esteja com você, sempre!`);
+        navigate("/login");
     }
 
     return (
