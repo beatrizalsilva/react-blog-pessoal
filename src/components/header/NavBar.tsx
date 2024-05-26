@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 function NavBar() {
     const navigate = useNavigate();
-    const { handleLogout } = useContext(AuthContext);
+    const { usuario, handleLogout } = useContext(AuthContext);
 
     function logout() {
         handleLogout();
@@ -21,7 +21,7 @@ function NavBar() {
                         <Link to="/home" className="text-1x font-[Lora] font-bold uppercase hover:text-pink-500 cursor-pointer">Blog Pessoal</Link>
 
                         <div className="flex justify-between gap-4">
-                            <div className="hover:text-pink-500 cursor-pointer">Postagens</div>
+                            <Link to="/postagem" className="hover:text-pink-500 cursor-pointer">Postagens</Link>
                             <Link to="/temas" className="hover:text-pink-500 cursor-pointer">Temas</Link>
                             <Link to="/cadastrarTema" className="hover:text-pink-500 cursor-pointer">Cadastrar temas</Link>
                             <div className="hover:text-pink-500 cursor-pointer">Perfil</div>

@@ -7,63 +7,63 @@ import { buscar } from "../../../services/Service";
 import { Hearts } from "react-loader-spinner";
 
 function ListaTemas() {
-    const [temas, setTemas] = useState<Tema[]>([]);
-    let navigate = useNavigate();
-  
-    const { usuario, handleLogout } = useContext(AuthContext);
-    const token = usuario.token;
-  
-    async function buscarTemas() {
-      try {
-        await buscar('/temas', setTemas, {
-          headers: { Authorization: token },
-        });
-      } catch (error: any) {
-        if (error.toString().includes('401')) {
-          alert('Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!')
-          handleLogout()
-        }
+  const [temas, setTemas] = useState<Tema[]>([]);
+  let navigate = useNavigate();
+
+  const { usuario, handleLogout } = useContext(AuthContext);
+  const token = usuario.token;
+
+  async function buscarTemas() {
+    try {
+      await buscar('/temas', setTemas, {
+        headers: { Authorization: token },
+      });
+    } catch (error: any) {
+      if (error.toString().includes('401')) {
+        alert('Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!')
+        handleLogout()
       }
     }
-  
-    useEffect(() => {
-      if (token === '') {
-        alert('Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!');
-        navigate('/login');
-      }
-    }, [token]);
-  
-    useEffect(() => {
-      buscarTemas();
-    }, [temas.length]);
+  }
 
-    return (
-        <>
-            {temas.length === 0 && (
-                <Hearts
-                  height="80"
-                  width="80"
-                  color="#7c3aed"
-                  ariaLabel="hearts-loading"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                />
-            )}
-            
-            <div className="flex justify-center w-full my-4">
-                <div className="container flex flex-col">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {temas.map((tema) => (
-                            <>
-                            <CardTema key={tema.id} tema={tema} />
-                            </>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </>
-    )
+  useEffect(() => {
+    if (token === '') {
+      alert('Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!');
+      navigate('/login');
+    }
+  }, [token]);
+
+  useEffect(() => {
+    buscarTemas();
+  }, [temas.length]);
+
+  return (
+    <>
+      {temas.length === 0 && (
+        <Hearts
+          height="80"
+          width="80"
+          color="#7c3aed"
+          ariaLabel="hearts-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      )}
+
+      <div className="flex justify-center w-full my-4">
+        <div className="container flex flex-col">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {temas.map((tema) => (
+              <>
+                <CardTema key={tema.id} tema={tema} />
+              </>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default ListaTemas;

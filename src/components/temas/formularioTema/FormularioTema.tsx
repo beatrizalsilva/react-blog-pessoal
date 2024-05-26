@@ -31,7 +31,6 @@ function FormularioTema() {
           ...tema,
           [e.target.name]: e.target.value
         })
-        console.log(JSON.stringify(tema))
     }
     
     async function gerarNovoTema(e: ChangeEvent<HTMLFormElement>) {
@@ -49,7 +48,7 @@ function FormularioTema() {
                     alert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!");
                     handleLogout();
                 } else {
-                    alert("Erro ao atualizar o tema. Sinto uma perturbação na Força...");
+                    alert("Erro ao atualizar tema. Sinto uma perturbação na Força...");
                 }
             }
         } else {
@@ -63,7 +62,7 @@ function FormularioTema() {
                     alert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!");
                     handleLogout();
                 } else {
-                    alert("Erro ao cadastrado o tema. Sinto uma perturbação na Força...");
+                    alert("Erro ao cadastrar tema. Sinto uma perturbação na Força...");
                 }
             }
             retornar();
