@@ -24,7 +24,7 @@ function NavBar() {
                             <Link to="/postagem" className="hover:text-pink-500 cursor-pointer">Postagens</Link>
                             <Link to="/temas" className="hover:text-pink-500 cursor-pointer">Temas</Link>
                             <Link to="/cadastrarTema" className="hover:text-pink-500 cursor-pointer">Cadastrar temas</Link>
-                            <div className="hover:text-pink-500 cursor-pointer">Perfil</div>
+                            <Link to="/perfil" className="hover:text-pink-500 cursor-pointer">Perfil</Link>
                             <Link to="" className="hover:text-pink-500 cursor-pointer" onClick={logout}>Sair</Link>
                         </div>
                     </div>

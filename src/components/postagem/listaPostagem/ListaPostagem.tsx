@@ -27,8 +27,8 @@ function ListaPostagem() {
             });
         } catch (error: any) {
             if (error.toString().includes('401')) {
-                alert('Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!')
-                handleLogout()
+                alert('Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!');
+                handleLogout();
             }
         }
     }
@@ -40,16 +40,19 @@ function ListaPostagem() {
     return (
         <>
             {postagem.length === 0 && (
-                <Hearts
-                height="80"
-                width="80"
-                color="#7c3aed"
-                ariaLabel="hearts-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-                visible={true}
-                />
+                <div className="w-full flex justify-center mx-auto">
+                    <Hearts
+                        height="80"
+                        width="80"
+                        color="#7c3aed"
+                        ariaLabel="hearts-loading"
+                        wrapperStyle={{}}
+                        wrapperClass="hearts-wrapper mx-auto"
+                        visible={true}
+                    />
+                </div>
             )}
+            
 
             <div className="container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {postagem.map((postagem) => (

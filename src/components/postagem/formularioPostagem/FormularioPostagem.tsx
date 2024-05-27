@@ -16,6 +16,7 @@ function FormularioPostagem() {
     const [tema, setTema] = useState<Tema>({
         id: 0,
         descricao: "",
+        postagem: null
     });
 
     const [postagem, setPostagem] = useState<Postagem>({
@@ -99,7 +100,8 @@ function FormularioPostagem() {
             }
         } else {
             try {
-                await cadastrar(`/postagens`, postagem, setPostagem, {
+                const {data, ...newPostagem} = postagem
+                await cadastrar(`/postagens`, newPostagem, setPostagem, {
                     headers: { "Authorization": token }
                 });
                 alert("Post cadastrado com sucesso. Que a Força esteja com você!");

@@ -40,15 +40,17 @@ function ListaTemas() {
   return (
     <>
       {temas.length === 0 && (
-        <Hearts
-          height="80"
-          width="80"
-          color="#7c3aed"
-          ariaLabel="hearts-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-        />
+        <div className="w-full flex justify-center mx-auto">
+          <Hearts
+            height="80"
+            width="80"
+            color="#7c3aed"
+            ariaLabel="hearts-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
       )}
 
       <div className="flex justify-center w-full my-4">
