@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import ToastAlert from "../../utils/ToastAlert";
 
 function Perfil() {
     const navigate = useNavigate();
@@ -8,7 +9,7 @@ function Perfil() {
 
     useEffect(() => {
         if (usuario.token === '') {
-          alert('Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!');
+          ToastAlert("Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!", "info");
           navigate('/login');
         }
     }, [usuario.token]);

@@ -12,11 +12,14 @@ import ListaPostagem from "./components/postagem/listaPostagem/ListaPostagem";
 import FormularioPostagem from "./components/postagem/formularioPostagem/FormularioPostagem";
 import DeletarPostagem from "./components/postagem/deletarPostagem/DeletarPostagem";
 import Perfil from "./pages/perfil/Perfil";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <>
       <AuthProvider>
+        <ToastContainer />
         {/* o browser router vai disponibilizar as rotas para os demais componentes */}
         <BrowserRouter>
           <NavBar />

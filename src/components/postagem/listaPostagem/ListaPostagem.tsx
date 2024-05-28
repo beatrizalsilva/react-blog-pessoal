@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import { buscar } from "../../../services/Service";
 import { Hearts } from "react-loader-spinner";
+import ToastAlert from "../../../utils/ToastAlert";
 
 function ListaPostagem() {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ function ListaPostagem() {
 
     useEffect(() => {
         if (token === '') {
-          alert('Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!');
+          ToastAlert("Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!", "info");
           navigate('/login');
         }
     }, [token]);
@@ -27,7 +28,7 @@ function ListaPostagem() {
             });
         } catch (error: any) {
             if (error.toString().includes('401')) {
-                alert('Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!');
+                ToastAlert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!", "info");
                 handleLogout();
             }
         }

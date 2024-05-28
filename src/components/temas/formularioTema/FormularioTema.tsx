@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import Tema from "../../../models/Tema";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import ToastAlert from "../../../utils/ToastAlert";
 
 function FormularioTema() {
     const navigate = useNavigate();
@@ -41,14 +42,14 @@ function FormularioTema() {
                 await atualizar(`/temas`, tema, setTema, {
                     headers: { "Authorization": token }
                 });
-                alert("Tema atualizado com sucesso. Que a Força esteja com você!");
+                ToastAlert("Tema atualizado com sucesso. Que a Força esteja com você!", "sucesso");
                 retornar();
             } catch (error: any) {
                 if (error.toString().includes('401')) {
-                    alert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!");
+                    ToastAlert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!", "info");
                     handleLogout();
                 } else {
-                    alert("Erro ao atualizar tema. Sinto uma perturbação na Força...");
+                    ToastAlert("Erro ao atualizar tema. Sinto uma perturbação na Força...", "erro");
                 }
             }
         } else {
@@ -56,13 +57,13 @@ function FormularioTema() {
                 await cadastrar(`/temas`, tema, setTema, {
                     headers: { "Authorization": token }
                 });
-                alert("Tema cadastrado com sucesso. Que a Força esteja com você!");
+                ToastAlert("Tema cadastrado com sucesso. Que a Força esteja com você!", "sucesso");
             } catch (error: any) {
                 if (error.toString().includes('401')) {
-                    alert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!");
+                    ToastAlert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!", "info");
                     handleLogout();
                 } else {
-                    alert("Erro ao cadastrar tema. Sinto uma perturbação na Força...");
+                    ToastAlert("Erro ao cadastrar tema. Sinto uma perturbação na Força...", "erro");
                 }
             }
             retornar();
@@ -75,7 +76,7 @@ function FormularioTema() {
         
     useEffect(() => {
         if (token === '') {
-          alert('Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!');
+          ToastAlert("Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!", "info");
           navigate('/login');
         }
     }, [token]);

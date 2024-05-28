@@ -4,6 +4,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import Tema from "../../../models/Tema";
 import Postagem from "../../../models/Postagem";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import ToastAlert from "../../../utils/ToastAlert";
 
 function FormularioPostagem() {
     const navigate = useNavigate();
@@ -48,7 +49,7 @@ function FormularioPostagem() {
 
     useEffect(() => {
         if (token === '') {
-          alert('Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!');
+          ToastAlert("Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!", "info");
           navigate('/login');
         }
     }, [token]);
@@ -88,14 +89,14 @@ function FormularioPostagem() {
                 await atualizar(`/postagens`, postagem, setPostagem, {
                     headers: { "Authorization": token }
                 });
-                alert("Post atualizado com sucesso. Que a Força esteja com você!");
+                ToastAlert("Post atualizado com sucesso. Que a Força esteja com você!", "sucesso");
                 retornar();
             } catch (error: any) {
                 if (error.toString().includes('401')) {
-                    alert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!");
+                    ToastAlert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!", "info");
                     handleLogout();
                 } else {
-                    alert("Erro ao atualizar o post. Sinto uma perturbação na Força...");
+                    ToastAlert("Erro ao atualizar o post. Sinto uma perturbação na Força...", "erro");
                 }
             }
         } else {
@@ -104,14 +105,14 @@ function FormularioPostagem() {
                 await cadastrar(`/postagens`, newPostagem, setPostagem, {
                     headers: { "Authorization": token }
                 });
-                alert("Post cadastrado com sucesso. Que a Força esteja com você!");
+                ToastAlert("Post cadastrado com sucesso. Que a Força esteja com você!", "sucesso");
                 retornar();
             } catch (error: any) {
                 if (error.toString().includes('401')) {
-                    alert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!");
+                    ToastAlert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!", "info");
                     handleLogout();
                 } else {
-                    alert("Erro ao cadastrar o post. Sinto uma perturbação na Força...");
+                    ToastAlert("Erro ao cadastrar o post. Sinto uma perturbação na Força...", "erro");
                 }
             }
         }

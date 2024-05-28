@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import { buscar, deletar } from "../../../services/Service";
 import Tema from "../../../models/Tema";
+import ToastAlert from "../../../utils/ToastAlert";
 
 function DeletarTema() {
     const navigate = useNavigate();
@@ -19,14 +20,14 @@ function DeletarTema() {
                 headers: {"Authorization": token}
             });
         } catch (error: any) {
-            alert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!");
+            ToastAlert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!", "info");
             handleLogout();
         }
     }
 
     useEffect(() => {
         if (token === '') {
-          alert('Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!');
+          ToastAlert("Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!", "info");
           navigate('/login');
         }
     }, [token]);
@@ -46,9 +47,9 @@ function DeletarTema() {
             await deletar(`/temas/${id}`, {
                 headers: {"Authorization": token}
             })
-            alert("Tema excluido com sucesso. Que a Força esteja com você!");
+            ToastAlert("Tema excluido com sucesso. Que a Força esteja com você!", "sucesso");
         } catch (error) {
-            alert("Erro ao excluir tema. Sinto uma perturbação na Força...");
+            ToastAlert("Erro ao excluir tema. Sinto uma perturbação na Força...", "erro");
         }
         retornar();
     }

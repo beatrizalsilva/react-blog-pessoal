@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from "react"
 import UsuarioLogin from "../models/UsuarioLogin"
 import { login } from "../services/Service"
+import ToastAlert from "../utils/ToastAlert";
 
 interface AuthContext {
     usuario: UsuarioLogin;
@@ -31,11 +32,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setIsLoading(true);
         try {
             await login(`/usuarios/logar`, userLogin, setUsuario)
-            alert("Usuário autenticado com sucesso! Que a Força esteja com você!");
+            ToastAlert("Usuário autenticado com sucesso! Que a Força esteja com você!", "sucesso");
             setIsLoading(false);
         } catch (error) {
             console.log(error)
-            alert("Falha na autenticação! Verificar as informações, você deve.");
+            ToastAlert("Falha na autenticação! Verificar as informações, você deve.", "erro");
             setIsLoading(false);
         }
     }

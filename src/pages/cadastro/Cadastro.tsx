@@ -4,6 +4,7 @@ import Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
 import { useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
+import ToastAlert from "../../utils/ToastAlert";
 
 function Cadastro() {
     const navigate = useNavigate();
@@ -51,12 +52,12 @@ function Cadastro() {
             setIsLoading(true)
             try {
                 await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
-                alert(`Cadastro realizado com sucesso! Que a Força esteja com você, jovem padawan.`)
+                ToastAlert("Cadastro realizado com sucesso! Que a Força esteja com você, jovem padawan.", "sucesso")
             } catch (error) {
-                alert(`O lado negro da Força interferiu! Erro ao cadastrar joven padawan!`)
+                ToastAlert("O lado negro da Força interferiu! Erro ao cadastrar joven padawan!", "erro")
             }
         } else {
-            alert(`Senha incorreta! Verificar as informações, você deve.`),
+            ToastAlert("Senha incorreta! Verificar as informações, você deve.", "erro"),
             setUsuario({ ...usuario, senha: "" });
             setConfirmaSenha("");
         }

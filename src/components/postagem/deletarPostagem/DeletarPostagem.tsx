@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../../context/AuthContext"
 import Postagem from "../../../models/Postagem"
 import { buscar, deletar } from "../../../services/Service"
+import ToastAlert from "../../../utils/ToastAlert"
 
 function DeletarPostagem() {
     const navigate = useNavigate()
@@ -20,7 +21,7 @@ function DeletarPostagem() {
             });
         } catch (error: any) {
           if (error.toString().includes('401')) {
-              alert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!");
+              ToastAlert("Você está em uma área restrita! O token expirou, favor logar novamente antes que os Stormtroopers cheguem!", "info");
               handleLogout();
             }
         }
@@ -28,7 +29,7 @@ function DeletarPostagem() {
 
     useEffect(() => {
         if (token === '') {
-          alert('Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!')
+          ToastAlert("Acesso permitido somente para membros da Aliança Rebelde. Por favor, faça login!", "info")
           navigate('/login')
         }
     }, [token])
@@ -48,9 +49,9 @@ function DeletarPostagem() {
             await deletar(`/postagens/${id}`, {
                 headers: { "Authorization": token }
             });
-            alert("Post excluido com sucesso. Que a Força esteja com você!");
+            ToastAlert("Post excluido com sucesso. Que a Força esteja com você!", "sucesso");
         } catch (error) {
-            alert("Erro ao excluir post. Sinto uma perturbação na Força...");
+            ToastAlert("Erro ao excluir post. Sinto uma perturbação na Força...", "erro");
         }
         retornar();
     }
