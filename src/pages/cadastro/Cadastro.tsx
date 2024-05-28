@@ -97,11 +97,11 @@ function Cadastro() {
                     
                     <div className="flex justify-around w-full gap-8">
                         <button className="rounded text-white bg-pink-400 hover:bg-pink-600 w-1/2 py-2" onClick={retorna}>
-                        { isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} />: <span>Cancelar</span> }
+                            <span>Cancelar</span> 
                         </button>
 
-                        <button type="submit" className="rounded text-white bg-purple-400 hover:bg-purple-600 w-1/2 py-2">
-                        { isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} />: <span>Cadastrar</span> }
+                        <button type='submit' className="rounded bg-purple-400 hover:bg-purple-600 text-white w-1/2 py-2 flex justify-center">
+                        {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> : <span>Cadastrar</span>}
                         </button>
                     </div>
                 </form>
