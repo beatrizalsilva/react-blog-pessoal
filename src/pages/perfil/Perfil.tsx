@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
-
 function Perfil() {
     const navigate = useNavigate();
     const { usuario } = useContext(AuthContext);

@@ -12,8 +12,9 @@ function NavBar() {
         navigate("/login");
     }
 
-    return (
-        <>
+    let component;
+    if (usuario.token !== "") {
+        component = (
             <div className="w-full bg-gradient-to-r from-pink-300 to-purple-400 text-black flex justify-center py-4">
                 <div className="container text-lg">
 
@@ -30,6 +31,12 @@ function NavBar() {
                     </div>
                 </div>
             </div>
+        )
+    }
+
+    return (
+        <>
+            {component}
         </>
     );
 }
