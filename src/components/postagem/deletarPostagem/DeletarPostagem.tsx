@@ -47,10 +47,11 @@ function DeletarPostagem() {
     async function deletarPostagem() {
         try {
             await deletar(`/postagens/${id}`, {
-                headers: { "Authorization": token }
-            });
+                headers: {"Authorization": token}
+            })
             ToastAlert("Post excluido com sucesso. Que a Força esteja com você!", "sucesso");
         } catch (error) {
+            console.log(error)
             ToastAlert("Erro ao excluir post. Sinto uma perturbação na Força...", "erro");
         }
         retornar();

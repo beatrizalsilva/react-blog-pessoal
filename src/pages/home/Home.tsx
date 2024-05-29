@@ -17,7 +17,7 @@ function Home() {
                     </div>
 
                     <div className="max-w-7xl flex flex-col items-center">
-                        <img src="https://i.imgur.com/VpwApCU.png" alt="Imagem Tela Inicial" width="400px" />
+                        <img src="https://ik.imagekit.io/beatrizalsilva/Blog%20Pessoal/home.png?updatedAt=1717003131908" alt="Imagem Tela Inicial" width="400px" />
                     </div>
                 </div>
             </div>
